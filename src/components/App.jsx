@@ -1,34 +1,69 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import { BrowserRouter as Router, Switch, Route, Link,} from 'react-router-dom';
+import Cart from './Cart';
 import Footer from './Footer';
 import Header from './Header';
+import Home from './Home';
+import Products from './Products';
+import Purchase from './Purchase';
 
 const App = () => {
+
+    const [shoppingCart, setCart] = useState([]);
+    const [total, setTotal] = useState(0);
+    const [purchaseTotal, setPurTotal] = useState(total);
+    const [purchasedItems, setPurchasedItems] = useState([]);
+
+
+    const updateCart = product => {
+      console.log(product);
+      setCart([
+        ...shoppingCart,
+        product
+      ]);
+      setTotal(
+        total + product.price
+      )
+      setPurTotal(
+        total + product.price
+      )
+      setPurchasedItems([
+        ...shoppingCart,
+        product
+      ])
+      console.log(shoppingCart);
+      console.log(total)
+      console.log(purchaseTotal);
+    }
+    //called when checked out.
+    const clearCart = () =>{
+      setCart([]);
+      setTotal(0);
+    }
+
   return (
     <div>
-      <Header />
-      {/* I want the Router with switch here */}
-      {/* will call Products and cart Components */}
+      
       <Router>
-            <Link to="/">Home</Link>
-            <Link to="/products">Products</Link>
-            <Link to="/cart">Cart</Link>
-        
+      <Header />
 
             <Switch>
-                {/* products will use map to display items. Pictures will be locally stored */}
-                <Route path="/products"> {/*probably no need for api passthrough*/}
-                    <Todos clearState={clearState} products={/*state*/ /* change to prods list */} getApi={getApiAxios}/>
+                <Route path="/products">
+                    <Products cart={shoppingCart} updateCart={updateCart}/>
                 </Route>
 
-                <Route path="/cart">{/* again, no need for api passthrough */}
-                    <Users clearState={clearState} prodsInCart={/*state*/ /* change to prodsInCart list */} getApi={getApiAxios}/>
+                <Route path="/cart">
+                    <Cart clearCart={clearCart} cart={shoppingCart} setCart={setCart} total={total}/>
                 </Route>
+
+                <Route path="/purchase">
+                  <Purchase total={purchaseTotal} purchasedItems={purchasedItems} clearCart={clearCart} />
+                </Route>
+
+                {/* </Router> */}
 
                 <Route path="/">
-                    {/* <p>Click on the Nav links!</p>  
-                    TODO: introduce company.
-                          include picture from an api using axios
-                          maybe get creative...maybe*/}
+                    <Home />
                 </Route>
                 
                 

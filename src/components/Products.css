@@ -1,0 +1,39 @@
+body {
+    margin: 0;
+  }
+
+ img.products {
+  border: 3px solid rgb(32, 32, 32);
+  width: 25%;
+ }
+
+ 
+ img.cart {
+   width: 10%;
+   border-radius: 7%;
+ }
+  
+  #partners {
+    height: 105px;
+    background-color: #eee;
+    white-space: nowrap;
+    width: 100%;
+    display: table;
+  }
+  #orderList {
+    height: 15px;
+    background-color: #eee;
+    white-space: nowrap;
+    width: 100%;
+    display: table;
+  }
+  
+  .logo-image {
+    vertical-align: middle;
+    padding-left: 2%;
+    display: table-cell;
+  }
+  
+  .logo-image img {
+    max-width: 100%;
+  }
