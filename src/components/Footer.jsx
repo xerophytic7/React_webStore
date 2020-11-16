@@ -2,9 +2,9 @@ import React from 'react';
 
 const Footer = () => {
     return (
-        <div>
-            
-        </div>
+        <footer>
+            <p>Copyright 2020, PlaceHoler Inc. <br/> All Rights Reserved</p>
+        </footer>
     );
 };
 
