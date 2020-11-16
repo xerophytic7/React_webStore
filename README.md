@@ -1,3 +1,5 @@
+This is a single page application that emulates a simple web store with add-to-cart functionality, and itemization of products after purchase.
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
